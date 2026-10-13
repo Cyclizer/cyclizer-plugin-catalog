@@ -1,0 +1,26 @@
+name: Validate Catalog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  catalog:
+    name: Schema, policy and tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install standalone catalog validator
+        run: python -m pip install -r requirements-dev.txt
+      - name: Validate curated index
+        run: python scripts/validate_catalog.py
+      - name: Run catalog verification tests
+        run: python -m unittest discover -s tests -v

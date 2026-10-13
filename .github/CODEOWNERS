@@ -1,0 +1,3 @@
+# Catalog entries represent curator decisions, not contributor self-approval.
+# Activate repository branch protection / rulesets to require this owner's review.
+* @gsr-4325
