@@ -22,7 +22,7 @@ tests/test_validate_catalog.py        Validation and policy regression tests
 docs/REVIEW_POLICY.md                 Operator review and approval policy
 .github/CODEOWNERS                     Proposed Catalog ownership
 .github/PULL_REQUEST_TEMPLATE.md      Listing review checklist
-.github/workflows/validate-catalog.yml  CI checks
+docs/GITHUB_ACTIONS_TEST_RETIREMENT.md  Hosted-test shutdown and recovery
 requirements-dev.txt                  Standalone Catalog validator dependency
 ```
 
@@ -60,9 +60,11 @@ anything.
    URL, exact package version and the archive's actual SHA-256.
 3. The operator reviews source provenance, license, capabilities, real
    download bytes and installation behavior in an isolated Cyclizer Host.
-4. CI validates the metadata. A curator explicitly approves the PR and
-   updates the Catalog revision and timestamp. Configure branch protection
-   to require CODEOWNERS review; a CODEOWNERS file alone is insufficient.
+4. Validate the metadata using the standalone validator and tests in an
+   appropriately authorized environment. A curator explicitly approves the
+   PR and updates the Catalog revision and timestamp. Configure branch
+   protection to require CODEOWNERS review; a CODEOWNERS file alone is
+   insufficient. See [hosted-test retirement](docs/GITHUB_ACTIONS_TEST_RETIREMENT.md).
 5. A specific immutable Git commit's JSON is fetched and checked against its
    SHA-256 before explicit operator import into Cyclizer. Merely merging
    a Catalog PR does not synchronize or activate a user's Plugins.

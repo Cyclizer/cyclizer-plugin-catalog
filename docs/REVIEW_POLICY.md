@@ -5,10 +5,12 @@
 The Catalog is an operator-maintained list of discoverable packages. A GitHub
 Pull Request from a publisher is a proposal, **not** approval. The curator
 must review code, provenance, licensing, capabilities and the concrete Release
-archive before approving the PR. A green GitHub Actions check is only
-syntactic/offline evidence. Configure a GitHub branch protection rule or
-ruleset requiring the Catalog owner to review changes to `main`; a CODEOWNERS
-file alone does not enforce approval.
+archive before approving the PR. Run the standalone catalog validator and
+tests in an authorized verification environment; GitHub-hosted test workflows
+were retired by the owner, but the verification requirement still applies.
+Record the commands, environment, revision and results in the PR. Configure
+a GitHub branch protection rule or ruleset requiring the Catalog owner to
+review changes to `main`; a CODEOWNERS file alone does not enforce approval.
 
 Catalog listing is not an OS sandbox, a safety guarantee, permission to run
 arbitrary code, or a grant to modify Cyclizer. Cyclizer's installer independently
